@@ -8,6 +8,10 @@
     "/protocols/bgp/@element/peer-group/@element": {
         "first": ["remote-as"]
     },
+    "/routing/routing-instance/@element/protocols/bgp/@element": {
+            "first": ["peer-group"],
+            "last": ["neighbor"]
+    },
     "/routing/routing-instance/@element/protocols/bgp/@element/neighbor/@element": {
         "first": ["remote-as"]
     },
