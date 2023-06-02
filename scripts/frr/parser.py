@@ -29,7 +29,7 @@ COMMANDS_DIRNAME = '/commands'
 VYATTA_JSON_FILE = "/etc/vyatta-routing/frr.json"
 OUTPUT_FILE = "/etc/vyatta-routing/frr.conf"
 OUTPUT_FILE_OWNER = "routing"
-FRR_RELOAD = "/usr/lib/frr/frr-reload.py"
+FRR_RELOAD = "/usr/bin/vtysh"
 
 
 def print_err(x): return print(x, file=sys.stderr)
@@ -361,8 +361,8 @@ def main():
     v.output_config(args.o, OUTPUT_FILE_OWNER)
 
     if args.reload:
-        ret = subprocess.run([ FRR_RELOAD, "--stdout", "--reload", "--log-level", "warning",
-                               "/etc/vyatta-routing/frr.conf" ],
+        ret = subprocess.run([FRR_RELOAD, "-f",
+                              "/etc/vyatta-routing/frr.conf"],
                              stdout=sys.stdout, stderr=sys.stderr)
         sys.exit(ret.returncode)
 
